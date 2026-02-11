@@ -1,54 +1,57 @@
-# def tree_height(n, parents):
-#     heights = [0] * n
+def solve(d, m, n, stops):
+    stops = [0] + stops + [d]
+    current_pos = 0
+    num_refills = 0
+    i = 0
 
-#     for i in range(n):
-#         if heights[i] != 0:
-#             continue
+    while current_pos < d:
+        last_pos = current_pos
 
-#         height = 0
-#         current = i
-#         path = []
+        while i < len(stops) and stops[i] <= current_pos + m:
+            last_pos = stops[i]
+            i += 1
 
-#         while current != -1:
-#             # 🛡 Защита от неверного индекса
-#             if current < 0 or current >= n:
-#                 break
+        if last_pos == current_pos:
+            return -1
 
-#             path.append(current)
+        current_pos = last_pos
 
-#             if heights[current] != 0:
-#                 height = heights[current]
-#                 break
+        if current_pos < d:
+            num_refills += 1
 
-#             current = parents[current]
-
-#         if height == 0:
-#             height = 1
-
-#         for j in range(len(path)-1, -1, -1):
-#             node = path[j]
-#             if node < 0 or node >= n:
-#                 continue
-#             if j == len(path)-1:
-#                 heights[node] = height
-#             else:
-#                 heights[node] = heights[path[j+1]] + 1
-
-#     return max(heights)
-# здесь мы считаем коэфиценты (цена(1 ст)/вес(2 ст) ) и берм наиб коэфицент
+    return num_refills
 
 
+# def file_open(input_file='main_tasks/task2/input.txt',
+#               output_file='main_tasks/task2/output.txt'):
+#     with open(input_file, 'r') as f:
+#         lines = f.read().strip().split('\n')
+#         d = int(lines[0])
+#         m = int(lines[1])
+#         n = int(lines[2])
+#         stops = list(map(int, lines[3].split()))
 
+#     result = solve(d, m, n, stops)
 
+#     with open(output_file, 'w') as f:
+#         f.write(str(result))
 
-def file_open(input_file='lab5/main_task/task2/input.txt',
-              output_file='lab5/main_task/task2/output.txt'):
+#     return result
+
+def file_open(input_file='main_tasks/task2/input.txt', output_file='main_tasks/task2/output.txt'):
     with open(input_file, 'r') as f:
-        n = int(f.readline().strip())
-        arr = list(map(int, f.readline().split()))
+        lines = f.read().strip().split('\n')
+        
+        # Считываем данные из файла
+        d = int(lines[0])  # Первая строка - это d
+        m = int(lines[1])  # Вторая строка - это m
+        n = int(lines[2])  # Третья строка - это n
+        stops = list(map(int, lines[3].split()))  # Четвертая строка - это список заправок
+        
+    # Вызываем функцию решения задачи
+    result = solve(d, m, n, stops)
 
-    result = tree_height(n, arr)
-
+    # Записываем результат в выходной файл
     with open(output_file, 'w') as f:
         f.write(str(result))
 
@@ -56,3 +59,12 @@ def file_open(input_file='lab5/main_task/task2/input.txt',
 
 
 print(file_open())
+
+
+
+
+
+
+
+
+

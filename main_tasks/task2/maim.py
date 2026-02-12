@@ -22,22 +22,6 @@ def solve(d, m, n, stops):
     return num_refills
 
 
-# def file_open(input_file='main_tasks/task2/input.txt',
-#               output_file='main_tasks/task2/output.txt'):
-#     with open(input_file, 'r') as f:
-#         lines = f.read().strip().split('\n')
-#         d = int(lines[0])
-#         m = int(lines[1])
-#         n = int(lines[2])
-#         stops = list(map(int, lines[3].split()))
-
-#     result = solve(d, m, n, stops)
-
-#     with open(output_file, 'w') as f:
-#         f.write(str(result))
-
-#     return result
-
 def file_open(input_file='main_tasks/task2/input.txt', output_file='main_tasks/task2/output.txt'):
     with open(input_file, 'r') as f:
         lines = f.read().strip().split('\n')

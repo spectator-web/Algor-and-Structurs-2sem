@@ -69,7 +69,7 @@ def solve(expression):
     return max_val[0][n - 1]
 
 
-def file_open(input_file='input.txt', output_file='output.txt'):
+def file_open(input_file='main_tasks/task14/input.txt', output_file='main_tasks/task14/output.txt'):
     """Чтение из файла, вычисление и запись результата."""
     with open(input_file, 'r') as f:
         s = f.readline().strip()
@@ -79,5 +79,4 @@ def file_open(input_file='input.txt', output_file='output.txt'):
     return result
 
 
-if __name__ == '__main__':
-    file_open()
+print(file_open())
